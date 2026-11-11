@@ -1,0 +1,118 @@
+== reset to S0 (baseline) ==
+  stack deployed in 218s
+runtime exists: vpcprobe-8JGEHa8dOh
+
+== S0 baseline: no endpoints ==
+  stack deployed in 13s
+  endpoint states after 0s: {}
+  runtime log state: runtime log group exists, 4 streams
+  INVOKE FAILED (no probe ever answered) after 97s: An error occurred (RuntimeClientError) when calling the InvokeAgentRuntime operation: Received error (502) from runtime. Please check your CloudWatch logs for m
+
+== S1 + S3 gateway endpoint ==
+  stack deployed in 45s
+  endpoint states after 0s: {'s3': 'available'}
+  runtime log state: runtime log group exists, 4 streams
+  results stable 29s after the endpoints reported available; first reachable at (s): {"s3": 29}
+    sts                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-assume-role                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    logs                             private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    monitoring                       private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    s3                               private_dns=False tcp=      ok 1ms  OK
+    bedrock-runtime                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    xray                             private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ecr.api                          private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ce                               private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ses                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    rds                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    elb                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    msk                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-GLOBAL (sts.amazonaws.com)   private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+
+== S2 + logs ==
+  stack deployed in 103s
+  endpoint states after 0s: {'s3': 'available', 'logs': 'available'}
+  runtime log state: runtime log group exists, 4 streams
+  results stable 29s after the endpoints reported available; first reachable at (s): {"s3": 29}
+    sts                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-assume-role                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    logs                             private_dns=True  tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    monitoring                       private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    s3                               private_dns=False tcp=      ok 2ms  OK
+    bedrock-runtime                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    xray                             private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ecr.api                          private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ce                               private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ses                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    rds                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    elb                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    msk                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-GLOBAL (sts.amazonaws.com)   private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+
+== S3 + sts ==
+  stack deployed in 80s
+  endpoint states after 0s: {'s3': 'available', 'logs': 'available', 'sts': 'available'}
+  runtime log state: runtime log group exists, 5 streams
+  results stable 30s after the endpoints reported available; first reachable at (s): {"logs": 30, "s3": 30}
+    sts                              private_dns=True  tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-assume-role                  private_dns=True  tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    logs                             private_dns=True  tcp=     ok 11ms  OK
+    monitoring                       private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    s3                               private_dns=False tcp=      ok 2ms  OK
+    bedrock-runtime                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    xray                             private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ecr.api                          private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ce                               private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ses                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    rds                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    elb                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    msk                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-GLOBAL (sts.amazonaws.com)   private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+
+== S4 + bedrock-runtime, monitoring, xray ==
+  stack deployed in 100s
+  endpoint states after 0s: {'s3': 'available', 'logs': 'available', 'sts': 'available', 'bedrock-runtime': 'available', 'xray': 'available', 'monitoring': 'available'}
+  runtime log state: runtime log group exists, 6 streams
+  results stable 29s after the endpoints reported available; first reachable at (s): {"sts-assume-role": 29, "logs": 29, "sts": 29, "s3": 29}
+    sts                              private_dns=True  tcp=      ok 5ms  OK
+    sts-assume-role                  private_dns=True  tcp=     ok 16ms  OK
+    logs                             private_dns=True  tcp=     ok 13ms  OK
+    monitoring                       private_dns=True  tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    s3                               private_dns=False tcp=      ok 2ms  OK
+    bedrock-runtime                  private_dns=True  tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    xray                             private_dns=True  tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ecr.api                          private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ce                               private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ses                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    rds                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    elb                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    msk                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-GLOBAL (sts.amazonaws.com)   private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+
+== S5 + ecr.api, ce, email, rds, elasticloadbalancing, kafka (no private DNS) ==
+  stack deployed in 108s
+  endpoint states after 900s: {'kafka': 'pendingAcceptance', 's3': 'available', 'logs': 'available', 'sts': 'available', 'bedrock-runtime': 'available', 'xray': 'available', 'monitoring': 'available', 'ecr.api': 'available', 'rds': 'available', 'elasticloadbalancing': 'available', 'email': 'available', 'ce': 'available'}
+  runtime log state: runtime log group exists, 7 streams
+  results stable 17s after the endpoints reported available; first reachable at (s): {"sts-assume-role": 17, "logs": 17, "monitoring": 17, "bedrock-runtime": 17, "s3": 17, "ce": 17, "ses": 17, "elb": 17, "rds": 17, "ecr.api": 17, "sts": 17, "xray": 17}
+    sts                              private_dns=True  tcp=     ok 36ms  OK
+    sts-assume-role                  private_dns=True  tcp=     ok 11ms  OK
+    logs                             private_dns=True  tcp=     ok 31ms  OK
+    monitoring                       private_dns=True  tcp=      ok 5ms  OK
+    s3                               private_dns=False tcp=      ok 2ms  OK
+    bedrock-runtime                  private_dns=True  tcp=     ok 41ms  OK
+    xray                             private_dns=True  tcp=     ok 42ms  OK
+    ecr.api                          private_dns=True  tcp=     ok 25ms  OK
+    ce                               private_dns=True  tcp=     ok 16ms  OK
+    ses                              private_dns=True  tcp=     ok 60ms  OK
+    rds                              private_dns=True  tcp=     ok 17ms  OK
+    elb                              private_dns=True  tcp=     ok 50ms  OK
+    msk                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-GLOBAL (sts.amazonaws.com)   private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+
+== summary: services reachable after each step ==
+  S0 baseline: no endpoints: runtime did not start
+  S1 + S3 gateway endpoint: started | reachable: s3
+  S2 + logs: started | reachable: s3
+  S3 + sts: started | reachable: logs, s3
+  S4 + bedrock-runtime, monitoring, xray: started | reachable: sts, sts-assume-role, logs, s3
+  S5 + ecr.api, ce, email, rds, elasticloadbalancing, kafka (no private DNS): started | reachable: sts, sts-assume-role, logs, monitoring, s3, bedrock-runtime, xray, ecr.api, ce, ses, rds, elb
+exit 0

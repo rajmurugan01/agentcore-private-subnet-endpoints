@@ -1,0 +1,22 @@
+
+== lag test: xray ==
+  stack deployed in 251s
+  with the xray endpoint removed: unreachable (4 probes)
+  re-adding xray
+  stack deployed in 82s
+  xray became reachable 161s after the stack deploy finished (8 probes)
+
+== lag test: sts ==
+  stack deployed in 211s
+  with the sts endpoint removed: unreachable (8 probes)
+  re-adding sts
+  stack deployed in 80s
+  sts became reachable 155s after the stack deploy finished (9 probes)
+
+== lag test: monitoring ==
+  stack deployed in 211s
+  with the monitoring endpoint removed: unreachable (4 probes)
+  re-adding monitoring
+  stack deployed in 94s
+  monitoring became reachable 179s after the stack deploy finished (9 probes)
+exit 0

@@ -1,0 +1,104 @@
+== reset to S0 (baseline) ==
+  stack deployed in 44s
+runtime exists: vpcprobe-8JGEHa8dOh
+
+== S0 baseline: no endpoints ==
+  stack deployed in 12s
+  (attempt 1 failed after 30s: RuntimeClientError: An error occurred (RuntimeClientError) when calling the InvokeAgentRuntime operation: Runtime initialization time exceeded. Please make sure that initialization; retrying once on a new session)
+  runtime log state: runtime log group exists, 2 streams
+  INVOKE FAILED after 30s: RuntimeClientError: An error occurred (RuntimeClientError) when calling the InvokeAgentRuntime operation: Runtime initialization time exceeded. Please make sure that initialization
+
+== S1 + S3 gateway endpoint ==
+  stack deployed in 41s
+  runtime log state: runtime log group exists, 2 streams
+  invoke ok after 29s (attempt 1); probe took 27.7s
+    sts                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-assume-role                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    logs                             private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    monitoring                       private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    s3                               private_dns=False tcp=      ok 3ms  OK
+    bedrock-runtime                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    xray                             private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ecr.api                          private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ce                               private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ses                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    rds                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    elb                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    msk                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-GLOBAL (sts.amazonaws.com)   private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+
+== S2 + logs ==
+  stack deployed in 119s
+  runtime log state: runtime log group exists, 2 streams
+  invoke ok after 30s (attempt 1); probe took 27.7s
+    sts                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-assume-role                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    logs                             private_dns=True  tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    monitoring                       private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    s3                               private_dns=False tcp=      ok 3ms  OK
+    bedrock-runtime                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    xray                             private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ecr.api                          private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ce                               private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ses                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    rds                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    elb                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    msk                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-GLOBAL (sts.amazonaws.com)   private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+
+== S3 + sts ==
+  stack deployed in 97s
+  runtime log state: runtime log group exists, 2 streams
+  invoke ok after 29s (attempt 1); probe took 27.9s
+    sts                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-assume-role                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    logs                             private_dns=True  tcp=      ok 3ms  UNREACHABLE (ConnectTimeoutError)
+    monitoring                       private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    s3                               private_dns=False tcp=     ok 12ms  OK
+    bedrock-runtime                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    xray                             private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ecr.api                          private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ce                               private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ses                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    rds                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    elb                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    msk                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-GLOBAL (sts.amazonaws.com)   private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+
+== S4 + bedrock-runtime, monitoring, xray ==
+  stack deployed in 96s
+  runtime log state: runtime log group exists, 3 streams
+  invoke ok after 29s (attempt 1); probe took 27.7s
+    sts                              private_dns=True  tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-assume-role                  private_dns=True  tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    logs                             private_dns=True  tcp=     ok 12ms  OK
+    monitoring                       private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    s3                               private_dns=False tcp=      ok 2ms  OK
+    bedrock-runtime                  private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    xray                             private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ecr.api                          private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ce                               private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    ses                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    rds                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    elb                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    msk                              private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+    sts-GLOBAL (sts.amazonaws.com)   private_dns=False tcp=FAIL TimeoutError  UNREACHABLE (ConnectTimeoutError)
+
+== S5 + ecr.api, ce, email, rds, elasticloadbalancing, kafka ==
+ handler returned message: "Private DNS can only be enabled after the endpoint connection is accepted by the owner of com.amazonaws.us-east-1.kafka. (Service: Ec2, Status Code: 400, Request ID: 2f977932-348c-43fa-a1d1-8fc9e5d03e40) (SDK Attempt Count: 1)" (RequestToken: 7b48196b-4dfa-3abe-01c9-973c3290db9f, HandlerErrorCode: GeneralServiceException)
+❌  PrivateSubnetProbe failed to deploy
+‣ DeploymentError: Resource updates failed:
+PrivateSubnetProbe/Ep-kafka/Resource  (AWS::EC2::VPCEndpoint Epkafka48BDE3E6)
+  Resource handler returned message: "Private DNS can only be enabled after the endpoint connection is accepted by the
+  owner of com.amazonaws.us-east-1.kafka. (Service: Ec2, Status Code: 400, Request ID:
+  2f977932-348c-43fa-a1d1-8fc9e5d03e40) (SDK Attempt Count: 1)" (RequestToken: 7b48196b-4dfa-3abe-01c9-973c3290db9f,
+  HandlerErrorCode: GeneralServiceException)
+Source Location: ...new InterfaceVpcEndpoint2 in aws-cdk-lib...
+                 new ProbeStack (/Users/rajmurugan/Documents/personal/agentcore-private-subnet-endpoints/cdk/lib/stack.ts:31:7)
+                 <anonymous> (/Users/rajmurugan/Documents/personal/agentcore-private-subnet-endpoints/cdk/bin/app.ts:5:1)
+                 ...node internals, ts-node, ts-node...
+
+   (only the most recent 500 CloudTrail events in the window were checked)
+   CloudTrail delivery can lag up to 15 minutes behind the failure; re-run `cdk diagnose` in a few minutes to check for additional control-plane errors (e.g. AccessDenied).
+
+exit 1

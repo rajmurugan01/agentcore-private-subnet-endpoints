@@ -1,0 +1,11 @@
+node_modules/
+cdk.out/
+cdk/cdk.outputs.json
+.venv/
+__pycache__/
+*.pyc
+.env
+dist/
+package/
+*.zip
+cdk/cdk.context.json

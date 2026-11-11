@@ -1,0 +1,19 @@
+deleting runtime vpcprobe-8JGEHa8dOh
+  runtime gone after 44s
+  destroy attempt 1 failed (1130s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 2 failed (2805s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 3 failed (4468s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 4 failed (6126s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 5 failed (7778s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 6 failed (9431s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 7 failed (11102s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 8 failed (12754s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 9 failed (14429s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 10 failed (16095s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 11 failed (17761s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 12 failed (19428s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 13 failed (21091s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 14 failed (22752s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 15 failed (24416s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 16 failed (26090s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 17 failed (27763s); 0 AgentCore ENIs still present; waiting 10 minutes

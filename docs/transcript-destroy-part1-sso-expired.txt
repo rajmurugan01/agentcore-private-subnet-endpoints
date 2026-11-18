@@ -1,0 +1,102 @@
+deleting runtime vpcprobe-8JGEHa8dOh
+  runtime gone after 44s
+  destroy attempt 1 failed (1130s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 2 failed (2805s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 3 failed (4468s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 4 failed (6126s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 5 failed (7778s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 6 failed (9431s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 7 failed (11102s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 8 failed (12754s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 9 failed (14429s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 10 failed (16095s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 11 failed (17761s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 12 failed (19428s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 13 failed (21091s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 14 failed (22752s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 15 failed (24416s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 16 failed (26090s); 0 AgentCore ENIs still present; waiting 10 minutes
+  destroy attempt 17 failed (27763s); 0 AgentCore ENIs still present; waiting 10 minutes
+Traceback (most recent call last):
+  File "/Users/rajmurugan/Documents/personal/agentcore-private-subnet-endpoints/demo/demo.py", line 207, in <module>
+    {"all": run_all, "destroy": destroy, "lag": lag}.get(sys.argv[1] if len(sys.argv) > 1 else "all", run_all)()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/rajmurugan/Documents/personal/agentcore-private-subnet-endpoints/demo/demo.py", line 198, in destroy
+    r = cdk(["destroy", "--force"])
+  File "/Users/rajmurugan/Documents/personal/agentcore-private-subnet-endpoints/demo/demo.py", line 42, in cdk
+    env.setdefault("CDK_DEFAULT_ACCOUNT", boto3.client("sts").get_caller_identity()["Account"])
+                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/client.py", line 1076, in _make_api_call
+    http, parsed_response = self._make_request(
+                            ~~~~~~~~~~~~~~~~~~^
+        operation_model, request_dict, request_context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/client.py", line 1100, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/endpoint.py", line 196, in _send_request
+    request = self.create_request(request_dict, operation_model)
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/endpoint.py", line 132, in create_request
+    self._event_emitter.emit(
+    ~~~~~~~~~~~~~~~~~~~~~~~~^
+        event_name,
+        ^^^^^^^^^^^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+        operation_name=operation_model.name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/signers.py", line 108, in handler
+    return self.sign(operation_name, request)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/signers.py", line 191, in sign
+    auth = self.get_auth_instance(**kwargs)
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/signers.py", line 312, in get_auth_instance
+    frozen_credentials = credentials.get_frozen_credentials()
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/credentials.py", line 697, in get_frozen_credentials
+    self._refresh()
+    ~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/credentials.py", line 584, in _refresh
+    self._protected_refresh(is_mandatory=is_mandatory_refresh)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/credentials.py", line 600, in _protected_refresh
+    metadata = self._refresh_using()
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/credentials.py", line 750, in fetch_credentials
+    return self._get_cached_credentials()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/credentials.py", line 760, in _get_cached_credentials
+    response = self._get_credentials()
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/credentials.py", line 2317, in _get_credentials
+    token = initial_token_data.get_frozen_token().token
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/tokens.py", line 90, in get_frozen_token
+    self._refresh()
+    ~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/tokens.py", line 103, in _refresh
+    self._protected_refresh()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/lib/python3.14/site-packages/botocore/tokens.py", line 130, in _protected_refresh
+    raise TokenRetrievalError(
+    ...<2 lines>...
+    )
+botocore.exceptions.TokenRetrievalError: Error when retrieving token from sso: Token has expired and refresh failed
+exit 1
